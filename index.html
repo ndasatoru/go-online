@@ -1,0 +1,252 @@
+!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>🗿Click the ikon🗿</title>
+
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background: #351bb9;
+            color: white;
+            padding-top: 50px;
+        }
+
+
+        #piggy {
+            font-size: 80px;
+            background: #4cceaf;
+            border: none;
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            cursor: pointer;
+            position:absolute;
+        }
+
+
+        #king {
+            font-size: 80px;
+            background: #d49a4e;
+            border: none;
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            cursor: pointer;
+            position:absolute;
+        }
+
+
+        #reset {
+            display: block;
+            margin: 300px auto;
+            padding: 10px 25px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <h1>🗿Click the ikon🗿</h1>
+
+
+    <h2>
+        Score: <span id="score">0</span>
+    </h2>
+     <h2>
+        Time: <span id="time">30</span>
+    </h2>
+
+
+    <button id="piggy">
+        🐷
+    </button>
+
+
+    <button id="king">
+        🤴
+    </button>
+
+
+    <button id="reset">
+        🔄 Reset
+    </button>
+
+
+
+
+    <script>
+
+
+        // =========================
+        // 1. VARIABLE
+        // =========================
+
+
+        let score = 0;
+        let time = 30;
+
+
+        // =========================
+        // 2. DOM
+        // =========================
+
+
+        const piggy =
+            document.getElementById("piggy");
+
+
+        const king =
+            document.getElementById("king");
+
+
+        const reset =
+            document.getElementById("reset");
+
+
+        const scoreText =
+            document.getElementById("score");
+
+
+        const timeText =
+            document.getElementById("time");
+
+
+        // =========================
+        // 3. FUNCTION
+        // =========================
+
+
+        function tambahScore() {
+
+
+            //score++;
+            score += 5;
+
+
+            scoreText.textContent = score;
+
+
+        }
+
+
+
+
+        function resetGame() {
+
+
+            score = 0;
+
+
+            scoreText.textContent = score;
+
+
+        }
+
+
+        function movepiggy() {
+
+
+            const x = Math.random() * 500;
+            const y = Math.random() * 300;
+
+
+            piggy.style.left = x + "px";
+            piggy.style.top = y + "px";
+
+
+}
+
+
+        function moveking() {
+
+
+            const x = Math.random() * 500;
+            const y = Math.random() * 300;
+
+
+            king.style.left = x + "px";
+            king.style.top = y + "px";
+
+
+}
+
+
+        // =========================
+        // 4. EVENT
+        // =========================
+
+
+        piggy.addEventListener(
+            "click",
+            function () {
+                tambahScore();
+                movepiggy();
+        }
+        );
+
+
+        king.addEventListener(
+            "click",
+            function () {
+                tambahScore();
+                moveking();
+            }
+        );
+
+
+        reset.addEventListener(
+            "click",
+            resetGame
+        );
+
+
+        // =========================
+        // 5. TIMER
+        // =========================
+
+
+        const timer = setInterval(
+             function() {
+
+
+                 time -= 1;
+
+
+                timeText.textContent = time;
+
+
+                if (time === 0) {
+
+
+                    clearInterval(timer);
+
+
+                    piggy.disabled = true;
+                    piggy.style.display = "none";
+
+
+                    alert ("awokwowkwok kalah muu");
+                }
+           
+
+
+            },
+            1000
+    );
+
+
+    </script>
+
+
+</body>
+
+
+</html>
